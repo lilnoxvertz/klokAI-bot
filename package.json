@@ -14,5 +14,10 @@
     "axios": "^1.8.4",
     "crypto": "^1.0.1",
     "ethers": "^6.13.5"
-  }
+  },
+  "keywords": [
+    "klokAI",
+    "klok bot",
+    "AI"
+  ]
 }
