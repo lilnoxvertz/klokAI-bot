@@ -18,7 +18,8 @@
    ```
 
 2. fill privateKey.txt with your wallet pk
+3. change referralCode on config/config.js
 
-3. ```bash
+4. ```bash
    npm start
    ```
