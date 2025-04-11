@@ -90,16 +90,18 @@ async function sendChat(token) {
         'x-session-token': token || 'BIGRIqobVWxjTnptRbvjQXg4BweLF6PZdXmzkyTeltY'
     };
 
-    const chatId = uuid.randomUUID()
+
 
     const result = []
     let attempt = 0
     let maxAttempt = 10
 
     while (attempt < maxAttempt) {
+        const chatId = uuid.randomUUID()
         attempt++
         console.log(`#${attempt} | attempting to send chat again..`)
         const message = await getRandomPrompt(prompt)
+
         console.log('prompt:', message, "\n")
         const payload = {
             id: chatId,
