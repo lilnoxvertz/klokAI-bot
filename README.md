@@ -3,6 +3,7 @@
 - auto register
 - auto claim points
 - auto send chat
+- auto referral
 
 ## Prerequisites
 
