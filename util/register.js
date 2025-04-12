@@ -21,7 +21,11 @@ async function registerAccount(signature, message, referralCode) {
         console.log('[VERIFICATION DATA]')
         console.log(result)
 
-        return result
+        return {
+            message: result.message,
+            session_token: result.session_token,
+            user_exists: result.user_exists
+        }
     } catch (error) {
         console.error(error.message)
     }

@@ -13,8 +13,7 @@ async function getPoints(token) {
         })
 
         const result = await point.json()
-
-        console.log(result)
+        return result
     } catch (error) {
         console.error(error.message)
     }

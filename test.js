@@ -7,7 +7,6 @@ const completeTask = require("./util/completeTask");
 const getPoints = require("./util/getPoints");
 const sendChat = require("./util/sendChat");
 const getRateLimit = require("./util/rateLimit");
-const storeSession = require("./helper/storeSession");
 
 let isRunning = true
 
@@ -29,35 +28,22 @@ async function startBot(wallet) {
     const signature = await signMessage(wallet)
     const register = await registerAccount(signature.signature, signature.message, referralCode)
 
-    if (register.user_exists) {
-        return
+    const message = register.message
+    const sessionToken = register.session_token
+
+    console.log("sessiong token: ", sessionToken)
+
+    if (register.message = "Verification successful") {
+        stats.success++
+        console.log(message)
     } else {
-        const message = register.message
-        const sessionToken = register.session_token
-
-        if (register.message = "Verification successful") {
-            stats.success++
-            console.log(message)
-        } else {
-            stats.failed++
-            console.log(message || 'failed')
-        }
-
-        await completeTask(sessionToken)
-        const point = await getPoints(sessionToken)
-        console.log(point)
-
-        const rateLimit = await getRateLimit(sessionToken)
-
-        if (rateLimit.usage > rateLimit.limit) {
-            console.log('exceed rate limit usage')
-            return
-        } else {
-            await sendChat(sessionToken)
-        }
+        stats.failed++
+        console.log(message || 'failed')
     }
 
-    await delay(5000, 10000)
+    await getPoints(sessionToken)
+    await getRateLimit(sessionToken)
+    await delay(2000, 5000)
 }
 
 async function processWallet(wallets) {
