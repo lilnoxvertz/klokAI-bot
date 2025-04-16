@@ -1,3 +1,5 @@
+## WARNING! BOT DOESNT WORK ANYMORE, THEY PUT INVISIBLE CAPTCHA
+
 ## Features
 - support multi wallet
 - auto register
